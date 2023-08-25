@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ex3.html</title>
+	</head>
+	<body>
+        <form id="myform">
+            <label for="form-name-input">Name</label>
+            <input type="text" name="form-name-input" id="name-input" placeholder="Enter Name Here">
+            <button type="submit">Submit</button>
+        </form>
+        <script>
+            function formValidator()
+            {
+                event.preventDefault();
+                let name = document.getElementById("name-input").value; 
+                if( name == "")
+                {
+                    alert("Please Input a Name");
+                }
+                else
+                {
+                    alert("Form is Valid");
+                    let specificPTag = document.createElement("p");
+                    specificPTag.innerHTML = "Hello " + name;
+                    document.body.appendChild(specificPTag);
+                }
+            }
+
+            let myform = document.getElementById("myform"); 
+            myform.addEventListener('submit', formValidator);
+        </script>
+	</body>
+</html>

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <head>This is order</head>
+{% endblock %}
+    <body>
+        {% block content %}
+            <form class="pizza" action="" method="POST">
+                      <h1>Hello {{customer.name}}. Here are your order details</h1>
+                    </div>
+                    {% csrf_token %}
+                    <ul>
+                        <br><br>
+                        <h4>Customer Details</h4>
+                        <br>
+                        <p>Name: {{customer.name}}</p>
+                        <p>Address 1: {{customer.address1}}</p>
+                        <p>Address 2: {{customer.address2}}</p>
+                        <p>Address 3: {{customer.address3}}</p>
+                        <br>
+                        <h4>Order Details</h4>
+                        <br>
+                        <p>Size: {{pizza.size}}</p>
+                        <p>Crust: {{pizza.crust}}</p>
+                        <p>Sauce: {{pizza.sauce}}</p>
+                        <p>Cheese: {{pizza.cheese}}</p>
+                        <br>
+                        <h4>Toppings</h4>
+                        <br>
+                        {% if pizza.pepperoni is True %}
+                            <p>Pepperoni</p>
+                        {% endif %}
+
+                        {% if pizza.chicken is True %}
+                            <p>Chicken</p>
+                        {% endif %}
+
+                        {% if pizza.ham is True %}
+                            <p>Ham</p>
+                        {% endif %}
+
+                        {% if pizza.pineapple is True %}
+                            <p>Pineapple</p>
+                        {% endif %}
+
+                        {% if pizza.pepper is True %}
+                            <p>Pepper</p>
+                        {% endif %}
+
+                        {% if pizza.mushrooms is True %}
+                            <p>Mushrooms</p>
+                        {% endif %}
+
+                        {% if pizza.onions is True %}
+                            <p>Onions</p>
+                        {% endif %}
+                    </ul>
+                    <br>
+                    <button class="btn-s btn-primary" type="submit"><a href="http://127.0.0.1:8000/order/">Go back</a>
+                        <button class="btn-s btn-primary" type="submit" ><a href="http://127.0.0.1:8000/success/">
+                        Confirm order
+                    </button>
+                        </a>
+                    </button>
+            </form>
+        {% endblock %}
+    </body>

@@ -1,0 +1,11 @@
+{% block content %}
+    <h1>{{book.title}}</h1>
+    <p>Author is <strong>{{book.author}}</strong></p>
+    <p><strong>{{book.title}}</strong> was released in the year <strong>{{book.release_year}}</strong></p>
+    <p>There are currently <strong>{{book.inventory_number}}</strong> books left<p>
+    <ul>
+    {% for borrow in borrowings %}
+            <p><strong>{{borrow.customer}}</strong> is borrowing this book</p>
+    {% endfor %}
+    </ul>
+{% endblock %}

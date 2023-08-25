@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <head>This is order</head>
+{% endblock %}
+    <body>
+        {% block content %}
+            <form class="customer" action="" method="POST">
+                <div class="card"style="max-width: 18rem; background-color: #4c0bce;">
+                    <div class="card-body">
+                      <p class="card-text">Enter your payment info and address.</p>
+                    </div>
+                    {% csrf_token %}
+                    {{form.as_table}}
+
+                <button type="submit">Go to checkout</button>
+            </form>
+        {% endblock %}
+    </body>

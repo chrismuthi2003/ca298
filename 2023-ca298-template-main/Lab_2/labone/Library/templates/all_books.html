@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}
+    <h1>All Books</h1>
+{% endblock %}
+
+{% block content %}
+    {% for b in books %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{b.title}}</h5>
+                <p class="card-text">{{b.author}}</p>
+                <p class="card-text">{{b.year}}</p>
+                <p class="card-text">{{b.price}}</p>
+                <a href="/books/{{b.id}}" class="btn btn-primary">View {{b.title}}</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,15 @@
+<p>Customer <strong>{{customer.name}}</strong> has borrowed the books:</p>
+{% block content %}
+    <ul>
+    {% for borrow in custom %}
+        {% if borrow.borrowing %}
+            <li><strong>{{borrow.book.title}}</strong></li>
+        {% endif %}
+    {% endfor %}
+    <p>And is currently borrowing:</p>
+    {% for borrow in custom %}
+        {%if not borrow.borrowing %}
+            <li><strong>{{borrow.book.title}}</strong></li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

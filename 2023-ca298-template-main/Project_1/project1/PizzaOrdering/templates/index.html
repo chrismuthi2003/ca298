@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+{% block head %}    
+{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="index-titles">
+    <h1>ORDER PIZZA NOW</h1>
+  </div>
+    <a href="/order/">
+      <img src="https://images.unsplash.com/photo-1624340209361-bfad6e30dbf4?ixlib=rb-4.0.3&dl=shivansh-sethi-9xd9lPYs3-w-unsplash.jpg&q=80&fm=jpg&crop=entropy&cs=tinysrgb" class="index-image" alt="Link to order page">
+    </a>
+    <div class="index-titles">
+      <h1>CUSTOMER DETAILS</h1>
+      <div class="card">
+        <div class="card-body" style="background-color: #4c0bce;">
+          <p class="card-text">Click on the link below to view your details such as credit card infromation and address</p>
+          <a href="order/customer" class="btn btn-dark">Enter Details</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <p id="text">hello</p>
+    </body>
+    <script>
+        fetch("https://swapi.dev/api/planets/1")
+        .then(response => response.json())
+        .then(data => 
+            document.getElementById("text").innerHTML = "Name: " + data.name + "<br>"
+            + "Diameter: " + data.diameter + "<br>"
+            + "Climate: " + data.climate + "<br>"
+            + "Terrain: " + data.terrain + "<br>"
+            + "Population: " + data.population);
+    </script>
+</html>

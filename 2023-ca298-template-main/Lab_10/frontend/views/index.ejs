@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <div id="container"></div>
+  <form id="book-form">
+	  <!-- book info goes here -->
+    <label for="title">Title:</label>
+    <input id="title" type="text">
+    <br>
+    <label for="author">Author:</label>
+    <input id="author" type="text">
+    <br>
+    <label for="genre">Genre:</label>
+    <select id="genre">
+        <option value="shonen">shonen</option>
+        <option value="mystery">mystery</option>
+        <option value="social_science_ficton">social science fiction</option>
+        <option value="action">action</option>
+    </select>
+    <br>
+    <label for="release_year">Release year:</label>
+    <input id="release_year" type="number">
+    <br>
+    <label for="inventory_number">Quantity:</label>
+    <input id="inventory_number" type="number">
+
+	  <button type="submit">Create new book</button>
+  </form>
+    <script>
+      function showAllBooks(){
+					let container = document.getElementById("container"); // load the container
+					container.innerHTML = ""; // delete the content already inside the container
+		      let req = "http://127.0.0.1:8000/api/book/"
+		      fetch(req) // make a request to this endpoint
+						.then(response => response.json()) // with our response, get the json data returned
+						.then(data =>{
+							container.innerHTML+=`<ol id="book-list"></ol>`; // create an empty list 
+							data.forEach(elem=>{
+								let bookList = document.getElementById("book-list"); // load the book lsit we just created
+								let bookString = `<li>${elem.title} - ${elem.author}</li><button onclick="viewSingleBook(${elem.id})">View</button>`; // create a new li element containing info on our book
+								bookList.innerHTML += bookString; // add the li element to the list of books
+							})
+						}); 
+				}
+      showAllBooks();
+      function viewSingleBook(bookId){
+					let container = document.getElementById("container"); // load the container
+					container.innerHTML = ""; // delete the content already inside the container
+		      let req = "http://127.0.0.1:8000/api/book/" + bookId + "/"
+		      fetch(req) // make a request to this endpoint
+						.then(response => response.json()) // with our response, get the json data returned
+						.then(data =>{
+						let bookString = `<p>${data.title}</p>
+                              <p>${data.author}</p>
+                              <p>${data.release_year}</p>`; // create a new li element containing info on our book
+						container.innerHTML += bookString; // add the li element to the list of books
+					})
+			}; 
+      viewSingleBook(1);
+
+      let form = document.getElementById("book-form");
+          form.addEventListener("submit", (e)=>{
+	        e.preventDefault();
+          let data = {
+            title: document.getElementById("title").value,
+            author: document.getElementById("author").value,
+            genre: document.getElementById("genre").value,
+            release_year: document.getElementById("release_year").value,
+            inventory_number: document.getElementById("inventory_number").value,
+          };
+
+          console.log(data);
+          fetch("http://127.0.0.1:8000/api/book/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((data) => {console.log(data)})
+            window.location.reload();
+        });
+
+    </script>
+  </body>
+</html>

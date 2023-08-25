@@ -1,0 +1,12 @@
+{% block title %}
+    <!-- book category -->
+{% endblock %}
+
+{% block content %}
+    {% for b in book %}
+        <h3>{{b.title}}</h3>
+        <p><strong>By: </strong>{{b.author}}</p>
+        <p>Made in {{b.release_year}}</p>
+        <p>{{b.inventory_number}}</p>
+    {% endfor %}
+{% endblock %}

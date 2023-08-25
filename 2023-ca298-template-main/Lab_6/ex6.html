@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <img src="https:\/\/images.dog.ceo\/breeds\/spaniel-welsh\/n02102177_2349.jpg" id="image">
+        <button id="btn" onclick="getDog()">Get new dog</button>
+    </body>
+
+
+    <script>
+        async function getDog()
+        {
+            let response = await fetch("https://dog.ceo/api/breeds/image/random");
+            let data = await response.json();
+            document.getElementById("image").src=data.message;
+        }
+    </script>
+</html>

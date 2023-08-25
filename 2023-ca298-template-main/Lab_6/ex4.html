@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ex4.html</title>
+	</head>
+	<body>
+        <form id="myform">
+            <label for="form-num1-input">Number 1</label>
+            <input type="text" name="form-num1-input" id="num1-input" placeholder="Input First Number">
+            <label for="form-num2-input">Number 2</label>
+            <input type="text" name="form-num2-input" id="num2-input" placeholder="Input Second Number">
+            <button type="submit">Submit</button>
+        </form>
+        <script>
+            function formValidator()
+            {
+                event.preventDefault();
+                let num1 = document.getElementById("num1-input").value; 
+                if(num1 == "")
+                {
+                    alert("Please Input a Number");
+                }
+                else if(isNaN(num1))
+                {
+                    alert("Num1 is not a number")
+                }
+                
+                let num2 = document.getElementById("num2-input").value;
+                if(num2 == "")
+                {
+                    alert("Please Input a Number")
+                }
+                else if(isNaN(num2))
+                {
+                    alert("Num2 is not a number")
+                }
+
+                else
+                {
+                    num1 = parseInt(num1);
+                    num2 = parseInt(num2);
+
+                    let result = num1 + num2;
+
+
+                    let specificPTag = document.createElement("p");
+                    specificPTag.innerHTML = result;
+                    document.body.appendChild(specificPTag);
+                }
+            }
+
+            let myform = document.getElementById("myform"); 
+            myform.addEventListener('submit', formValidator);
+        </script>
+	</body>
+</html>
